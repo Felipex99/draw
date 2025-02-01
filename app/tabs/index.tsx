@@ -1,15 +1,21 @@
 import { Text, View, StyleSheet } from "react-native";
 import {Ionicons} from "@expo/vector-icons"
+import {Image} from "expo-image"
 import {Link} from "expo-router"
+import ImageViewer from "@/app/components/ImageViewer";
+import Btn  from "@/app/components/Btn."
+const  PlaceholderImage = require("@/assets/images/background-image.png")
 
 export default function Index() {
   return (
     <View style ={style.container}>
-      <View style={style.button}>
-        <Ionicons name={"image"} size={20}/>
-        <Text style={style.text}> Escolha uma foto</Text>
+      <View style = {style.imageContainer}>
+        <ImageViewer imgSource={PlaceholderImage}/>
       </View>
-      <Text style={[style.text,{color:"white"}]}>Usar essa foto</Text>
+      <View style={style.footerContainer}>
+        <Btn label="Novo Botao" theme={"primary"}/>
+        <Btn label="Usar essa foto"/>
+      </View>
     </View>
   );
 }
@@ -17,32 +23,25 @@ export default function Index() {
 const style = StyleSheet.create({
   container:{
     flex:1,
-    backgroundColor:"#313131",
+    backgroundColor:"#25292e",
     alignItems:"center",
     justifyContent:"center",
-    padding:18,
-    gap:30
+    paddingTop:70,
+    paddingBottom:"10%",
+    gap:22
   },
-  button:{
-    backgroundColor:"white",
-    gap:6,
-    paddingVertical:20,
-    minWidth:"100%",
-    flexDirection:"row",
+  imageContainer:{
+    flex: 1,
+  },
+  footerContainer:{
+    flex:1/3,
     alignItems:"center",
-    justifyContent:"center",
-    borderRadius:20,
-    borderWidth:5,
-    borderColor:"#f0e007",
+    gap:30,
   },
+
   text: {
     fontSize:18,
     color: "#000",
     textAlign:"center"
   },
-  link:{
-    fontSize:20,
-    textDecorationLine:"underline",
-    color:"#4a9bf8"
-  }
 })
