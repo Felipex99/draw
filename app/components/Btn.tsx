@@ -1,15 +1,22 @@
 import {StyleSheet, Text, View, Pressable, Alert} from "react-native"
 import FontAwesome from"@expo/vector-icons/FontAwesome"
+
+
 type Props = {
     label: string,
-    theme?: "primary"
+    theme?: "primary",
+    imgPick?: ()=>void
 }
 
-export default function Btn({label, theme}:Props){
+export default function Btn({label, theme, imgPick}:Props){
     if(theme==="primary"){
         return(
-            <View style={[style.btnContainer,{borderColor:"#f0e007", borderRadius:20, borderWidth:5,}]}>
-                <Pressable style={[style.btn,{backgroundColor:"#fff"}]} onPress={()=>alert("Clique")} onLongPress={()=>alert("LONG")} onPressIn={()=>alert("triscou")}>
+            <View style={[style.btnContainer,{
+                borderColor:"#f0e007", 
+                borderRadius:20, 
+                borderWidth:5,
+                }]}>
+                <Pressable style={[style.btn,{backgroundColor:"#fff",flexDirection:"row", gap:6,}]} onPress={imgPick} >
                     <FontAwesome name={"image"} size={20}/>
                     <Text style={style.btnLabel}>{label}</Text>
                 </Pressable>
@@ -18,9 +25,9 @@ export default function Btn({label, theme}:Props){
     }
     return(
         <View style={style.btnContainer}>
-            <Pressable style={style.btn} onPress={()=>alert("Clique")} onLongPress={()=>alert("LONG")} onPressIn={()=>alert("triscou")}>
-                <FontAwesome name="picture-o" size={18} color="#25292e" style={style.buttonIcon} />
-                <Text style={style.btnLabel}>{label}</Text>
+            <Pressable style={[style.btn,{flexDirection:"row", gap:6,}]} onPress={imgPick}>
+                <FontAwesome name={"edit"} size={20} color={"white"}/>
+                <Text style={[style.btnLabel,{color:"#fff"}]}>{label}</Text>
             </Pressable>
         </View>
     )
@@ -40,7 +47,6 @@ const style  = StyleSheet.create({
         borderRadius: 10,
         width:"100%",
         height:"100%",
-        flexDirection:"row",
         alignItems:"center",
         justifyContent:"center",
     },
