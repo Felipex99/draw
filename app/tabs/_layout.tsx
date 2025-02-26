@@ -26,6 +26,20 @@ export default function TabsLayout(){
                 )
                 ,headerShown:true,
               }}/>
+
+            <Tabs.Screen
+              name="draw"
+              options={{
+                title:"Draw",
+                headerTransparent:true,
+                tabBarIcon:(({color, focused}) =>(
+                  <Ionicons name={focused?"brush-sharp":"brush-outline"} color={color} size={24}/>
+                )),
+                tabBarStyle:{
+                  backgroundColor:"#25292e"
+                }
+              }}
+            />
             <Tabs.Screen name="about" 
             options= {{
               title:"About", 
